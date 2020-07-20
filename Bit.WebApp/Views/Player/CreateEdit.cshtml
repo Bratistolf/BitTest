@@ -1,0 +1,83 @@
+﻿@model Bit.WebApp.Models.PlayerCreateEditViewModel
+
+@{
+    ViewData["Title"] = "CreateEdit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Player.Name" class="control-label"></label>
+                <input asp-for="Player.Name" class="form-control" />
+                <span asp-validation-for="Player.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.Surname" class="control-label"></label>
+                <input asp-for="Player.Surname" class="form-control" />
+                <span asp-validation-for="Player.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.Gender" class="control-label"></label>
+                <select asp-for="Player.Gender"
+                        class="form-control"
+                        asp-items="@(new SelectList(new List<string> { "Мужской", "Женский" }))">
+                </select>
+                <span asp-validation-for="Player.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.Birthday" class="control-label"></label>
+                <input asp-for="Player.Birthday" class="form-control" id="txtSelectedDate" readonly="readonly" />
+                <span asp-validation-for="Player.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.TeamId" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Player.TeamId, (new SelectList(Model.Teams, "TeamId", "TeamName")), new { @class="form-control", id = "team-selectlist" })
+                <span asp-validation-for="Player.TeamId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsNewTeam" class="control-label">
+                    <input type="checkbox" asp-for="IsNewTeam" class="form-check" id="check-newteam" />
+                </label>
+                <input asp-for="NewTeamName"
+                       class="form-control"
+                       id="team-new"
+                       disabled="disabled" />
+                <span asp-validation-for="NewTeamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.Country" class="control-label"></label>
+                <select asp-for="Player.Country"
+                        class="form-control"
+                        asp-items="@(new SelectList(new List<string> { "Россия", "США", "Италия" }))">
+                </select>
+                <span asp-validation-for="Player.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="btn-submit" type="submit">Сохранить</button>
+                <a asp-action="Index" class="btn btn-danger">Назад к листу</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#check-newteam").click(function () {
+                if (this.checked) {
+                    $('#team-new').removeAttr('disabled');
+                    $('#team-selectlist').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#team-new').attr('disabled', 'disabled');
+                    $('#team-selectlist').removeAttr('disabled');
+                }
+            });
+        });
+    </script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_DatepickerPartial");}
+}

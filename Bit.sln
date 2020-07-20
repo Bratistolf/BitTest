@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit.Api", "Bit.Api\Bit.Api.csproj", "{307232D7-EC94-49BD-A5B9-805CEC6C17E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bit.WebApp", "Bit.WebApp\Bit.WebApp.csproj", "{36153590-EAA6-40A9-9E25-1725C8AEB706}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{307232D7-EC94-49BD-A5B9-805CEC6C17E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307232D7-EC94-49BD-A5B9-805CEC6C17E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307232D7-EC94-49BD-A5B9-805CEC6C17E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307232D7-EC94-49BD-A5B9-805CEC6C17E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36153590-EAA6-40A9-9E25-1725C8AEB706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36153590-EAA6-40A9-9E25-1725C8AEB706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36153590-EAA6-40A9-9E25-1725C8AEB706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36153590-EAA6-40A9-9E25-1725C8AEB706}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {912CE97B-D667-42FA-9CC7-C246670A7693}
+	EndGlobalSection
+EndGlobal

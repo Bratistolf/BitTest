@@ -1,0 +1,68 @@
+﻿@model Bit.WebApp.Models.PlayerListViewModel
+@using Bit.Api.Helpers;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Каталог футболистов 3.0</h1>
+
+<p>
+    <a asp-action="CreateEdit" class="btn btn-info">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        @{ Bit.WebApp.Models.PlayerModel dummyModel = null;
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.Birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.TeamId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => dummyModel.Country)
+                </th>
+                <th></th>
+            </tr>
+        }
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Players)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Teams.FirstOrDefault(x => x.TeamId == item.TeamId).TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    <a asp-action="CreateEdit" asp-route-id="@item.Id" class="btn btn-info">Редактировать</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
